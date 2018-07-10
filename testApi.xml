@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Framework" parallel="methods" thread-count="5">
+    <test name="Framework test">
+        <classes>
+            <class name="org.test.TestApi"/>
+        </classes>
+    </test>
+</suite>

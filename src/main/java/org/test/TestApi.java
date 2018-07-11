@@ -62,6 +62,6 @@ public class TestApi extends TestBaseApi {
         .when()
             .post("/posts")
         .then()
-            .statusCode(201);
+            .statusCode(HttpStatus.SC_CREATED);
     }
 }

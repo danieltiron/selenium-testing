@@ -1,8 +1,10 @@
 package org.framework.utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UIActions {
@@ -45,5 +47,35 @@ public class UIActions {
 
     public static void click(WebElement element) {
         element.click();
+    }
+
+    public static void selectFromDropdownByValue(WebElement element, String value) {
+        if (value == null) {
+            return;
+        }
+        element.findElement(By.cssSelector("option[value='" + value + "']")).click();
+    }
+
+    public static void selectRadioAndCheckoxByValue(By element, String value) {
+        if (value == null) {
+            return;
+        }
+
+        List<WebElement> radios = LocalWebDriver.get().findElements(element);
+        for (WebElement radio:radios){
+            if (radio.getAttribute("value").equals(value.toLowerCase())){
+                radio.click();
+                return;
+            }
+        }
+    }
+
+    public static WebElement getElementParent(WebElement element) {
+        return element.findElement(By.xpath(".."));
+    }
+
+    public static String getAbsolutePath(String fileName){
+        String workingDir = System.getProperty("user.dir");
+        return workingDir + "/src/main/resources/" + fileName;
     }
 }

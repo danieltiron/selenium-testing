@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.Is.is;

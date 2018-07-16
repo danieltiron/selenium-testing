@@ -3,11 +3,12 @@ package org.test.utils;
 import org.framework.data.TestData;
 import org.framework.utils.LocalWebDriver;
 import org.framework.utils.WebdriverFactory;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 
 public class TestBase {
-    protected static String randomSuffix = "";
 
+    public static String randomSuffix;
 
     @Parameters({"browserName", "appUrl"})
     @BeforeSuite
@@ -15,6 +16,8 @@ public class TestBase {
         LocalWebDriver.setBaseUrl(appUrl);
         WebdriverFactory.browserName = browserName;
         randomSuffix = TestData.getRandomSuffix();
+        Reporter.log("Random suffix used: " + randomSuffix, true);
+
     }
 
     @BeforeMethod

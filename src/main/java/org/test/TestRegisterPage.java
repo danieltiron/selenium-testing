@@ -1,37 +1,38 @@
 package org.test;
 
+import org.framework.data.TestData;
+import org.framework.data.User;
 import org.framework.pages.NewAccountPage;
-
 import org.test.utils.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
 
 public class TestRegisterPage extends TestBase{
+    private User validUser = TestData.getUserById("validUser", "users.json");
+    private User userWithExistingEmail = TestData.getUserById("userWithExistingEmail", "users.json");
 
     @Test
     public void testCreateNewAccount() {
         new NewAccountPage.AccountBuilder()
                 .open()
-                .fillFirstNameInput("gogu")
-                .fillLastNameInput("gigi")
-                .fillPhoneInput("0765555544")
-                .fillUsernameInput("testuser" + randomSuffix)
-                .fillEmailInput("testEmail" + randomSuffix + "@gmail.com")
-                .selectCountry("Algeria")
-                .selectDay("22")
-                .selectMonth("7")
-                .selectYear("1984")
-                .fillPassInput("test123!@#")
-                .fillConfirmPassInput("test123!@#")
-                .selectMaritalStatus("Married")
-                .selectHobby("Dance")
-                .selectHobby("Reading")
-                .uploadPhoto("logo_packer.png")
-                .fillAboutYourselfInput("dasd as dsad dsa sad sad das asd sa ")
+                .fillFirstNameInput(validUser.firstName)
+                .fillLastNameInput(validUser.lastName)
+                .fillPhoneInput(validUser.phoneNumber)
+                .fillUsernameInput(validUser.getUsername())
+                .fillEmailInput(validUser.getEmail())
+                .selectCountry(validUser.country)
+                .selectDay(validUser.day)
+                .selectMonth(validUser.month)
+                .selectYear(validUser.year)
+                .fillPassInput(validUser.pass)
+                .fillConfirmPassInput(validUser.confirmedPass)
+                .selectMaritalStatus(validUser.maritalStatus)
+                .selectHobby(validUser.hobby)
+                .uploadPhoto(validUser.photo)
+                .fillAboutYourselfInput(validUser.aboutYourself)
                 .submit()
                 .checkSubmitConfirmationMessageIsDisplayed();
-
     }
 
     @Test
@@ -54,19 +55,18 @@ public class TestRegisterPage extends TestBase{
                 .checkConfirmPasswordIsMandatory(true);
     }
 
-
-    @Test(dependsOnMethods={"testCreateNewAccount"})
+    @Test(dependsOnMethods = "testCreateNewAccount")
     public void testCantCreateAccountWithSameEmail() {
         String errorMessage = new NewAccountPage.AccountBuilder()
                 .open()
-                .fillFirstNameInput("gogu")
-                .fillLastNameInput("gigi")
-                .selectHobby("Dance")
-                .fillPhoneInput("0765555544")
-                .fillUsernameInput("anothertestuser" + randomSuffix)
-                .fillEmailInput("testEmail" + randomSuffix + "@gmail.com")
-                .fillPassInput("test123!@#")
-                .fillConfirmPassInput("test123!@#")
+                .fillFirstNameInput(userWithExistingEmail.firstName)
+                .fillLastNameInput(userWithExistingEmail.lastName)
+                .selectHobby(userWithExistingEmail.hobby)
+                .fillPhoneInput(userWithExistingEmail.phoneNumber)
+                .fillUsernameInput(userWithExistingEmail.getUsername())
+                .fillEmailInput(validUser.getEmail())
+                .fillPassInput(userWithExistingEmail.pass)
+                .fillConfirmPassInput(userWithExistingEmail.confirmedPass)
                 .submit()
                 .getSubmitErrorMessage();
         Assert.assertTrue(errorMessage.contains("E-mail address already exists"));

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "validUser",
+    "email": "test@gmail.com",
+    "lastName": "Tom",
+    "firstName": "John",
+    "phoneNumber": "0700000000",
+    "username": "tomjohn",
+    "country": "Algeria",
+    "day": "22",
+    "month": "8",
+    "year": "1984",
+    "pass": "12345678",
+    "confirmedPass": "12345678",
+    "maritalStatus": [
+      "Married"
+    ],
+    "hobby": [
+      "Dance",
+      "Reading",
+      "Cricket"
+    ],
+    "photo": "logo_packer.png",
+    "aboutYourself": "sdfdsfdsf sdfs fds"
+  },
+  {
+    "id": "userWithExistingEmail",
+    "lastName": "Nicholas",
+    "firstName": "Smith",
+    "phoneNumber": "0711111111",
+    "username": "nicholas",
+    "pass": "12345678",
+    "confirmedPass": "12345678",
+    "hobby": [
+      "Dance",
+      "Reading"
+    ]
+  }
+]
+

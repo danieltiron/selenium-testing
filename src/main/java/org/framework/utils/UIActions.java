@@ -56,16 +56,17 @@ public class UIActions {
         element.findElement(By.cssSelector("option[value='" + value + "']")).click();
     }
 
-    public static void selectRadioAndCheckoxByValue(By element, String value) {
+    public static void selectRadioAndCheckoxByValue(By element, List<String> value) {
         if (value == null) {
             return;
         }
 
         List<WebElement> radios = LocalWebDriver.get().findElements(element);
         for (WebElement radio:radios){
-            if (radio.getAttribute("value").equals(value.toLowerCase())){
-                radio.click();
-                return;
+            for (String anyValue : value) {
+                if (radio.getAttribute("value").contains(anyValue.toLowerCase())) {
+                    radio.click();
+                }
             }
         }
     }
@@ -74,8 +75,4 @@ public class UIActions {
         return element.findElement(By.xpath(".."));
     }
 
-    public static String getAbsolutePath(String fileName){
-        String workingDir = System.getProperty("user.dir");
-        return workingDir + "/src/main/resources/" + fileName;
-    }
 }

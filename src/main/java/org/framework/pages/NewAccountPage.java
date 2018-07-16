@@ -1,11 +1,14 @@
 package org.framework.pages;
 
+import org.framework.data.TestData;
 import org.framework.utils.PageBase;
 import org.framework.utils.UIActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class NewAccountPage {
@@ -20,8 +23,8 @@ public class NewAccountPage {
     private final String day;
     private final String year;
     private final String phone;
-    private final String maritalStatus;
-    private final String hobby;
+    private final List<String> maritalStatus;
+    private final List<String> hobby;
     private final String photoPath;
 
     NewAccountPage(AccountBuilder builder) {
@@ -55,8 +58,8 @@ public class NewAccountPage {
         private String year;
         private String phone;
         private String aboutYoureself;
-        private String maritalStatus;
-        private String hobby;
+        private List<String> maritalStatus;
+        private List<String> hobby;
         private String photoPath;
 
         @FindBy(id = "name_3_firstname")
@@ -192,13 +195,13 @@ public class NewAccountPage {
             return this;
         }
 
-        public AccountBuilder selectMaritalStatus(String maritalStatus) {
+        public AccountBuilder selectMaritalStatus(List<String> maritalStatus) {
             this.maritalStatus = maritalStatus;
             UIActions.selectRadioAndCheckoxByValue(maritalStatusRadios, maritalStatus);
             return this;
         }
 
-        public AccountBuilder selectHobby(String hobby) {
+        public AccountBuilder selectHobby(List<String> hobby) {
             this.hobby = hobby;
             UIActions.selectRadioAndCheckoxByValue(hobbyCheckboxes, hobby);
             return this;
@@ -212,7 +215,7 @@ public class NewAccountPage {
 
         public AccountBuilder uploadPhoto(String photoName) {
             this.photoPath = photoName;
-            String filePath = UIActions.getAbsolutePath(photoName);
+            String filePath = TestData.getAbsolutePath(photoName);
             UIActions.setValue(profilePictureInput, filePath);
             return this;
         }

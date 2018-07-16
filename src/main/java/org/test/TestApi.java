@@ -3,7 +3,7 @@ package org.test;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.test.utils.TestBaseApi;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +51,7 @@ public class TestApi extends TestBaseApi {
 
     @Test
     public void testAddingNewPostWorks(){
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("title", "test");
         map.put("body", "test body");
         map.put("userId", "1");

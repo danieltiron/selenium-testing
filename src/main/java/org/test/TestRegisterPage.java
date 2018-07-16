@@ -3,6 +3,7 @@ package org.test;
 import org.framework.data.TestData;
 import org.framework.data.User;
 import org.framework.pages.NewAccountPage;
+import org.framework.strings.StringsEN;
 import org.test.utils.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -69,7 +70,7 @@ public class TestRegisterPage extends TestBase{
                 .fillConfirmPassInput(userWithExistingEmail.confirmedPass)
                 .submit()
                 .getSubmitErrorMessage();
-        Assert.assertTrue(errorMessage.contains("E-mail address already exists"));
+        Assert.assertTrue(errorMessage.contains(StringsEN.EMAIL_ALREADY_EXISTS_ERROR.getString()));
     }
 
     @Test
@@ -79,7 +80,7 @@ public class TestRegisterPage extends TestBase{
                 .fillPassInput("1234567")
                 .submit()
                 .getPasswordFieldValidationMessage();
-        Assert.assertTrue(errorMessage.contains("Minimum 8 characters required"));
+        Assert.assertTrue(errorMessage.contains(StringsEN.MINIMUM_8_CHARACTERS_PASS_ERROR.getString()));
     }
 
     @Test
@@ -88,6 +89,6 @@ public class TestRegisterPage extends TestBase{
                 .open()
                 .fillPassInput("12345678")
                 .getPasswordStrenghtness();
-        Assert.assertTrue(passStr.contains("pass_v_week"));
+        Assert.assertTrue(passStr.contains(StringsEN.PASS_VERY_WEEK.getString()));
     }
 }

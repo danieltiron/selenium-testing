@@ -2,6 +2,7 @@ package org.test;
 
 
 import org.framework.pages.LoginPage;
+import org.framework.strings.StringsEN;
 import org.test.utils.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -33,7 +34,7 @@ public class TestLoginPage extends TestBase {
         String successMessage = new LoginPage()
                 .openAndLoginAs("tomsmith", "SuperSecretPassword!")
                 .getSuccessMessageText();
-        Assert.assertTrue(successMessage.contains("You logged into a secure area!"));
+        Assert.assertTrue(successMessage.contains(StringsEN.LOGGED_INTO_SECURE_AREA_MESSAGE.getString()));
     }
 
     @Test

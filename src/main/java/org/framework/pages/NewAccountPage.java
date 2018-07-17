@@ -1,6 +1,7 @@
 package org.framework.pages;
 
 import org.framework.data.TestData;
+import org.framework.strings.StringsEN;
 import org.framework.utils.PageBase;
 import org.framework.utils.UIActions;
 import org.openqa.selenium.By;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-@SuppressWarnings("FieldCanBeLocal")
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class NewAccountPage {
     private final String firstName;
     private final String lastname;
@@ -45,6 +46,7 @@ public class NewAccountPage {
 
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public static class AccountBuilder extends PageBase{
         private String firstname;
         private String lastname;
@@ -184,7 +186,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder fillAboutYourselfInput(String text) {
-            this.aboutYoureself = aboutYoureself;
+            this.aboutYoureself = text;
             UIActions.setValue(aboutYourselfInput, text);
             return this;
         }
@@ -221,7 +223,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkUsernameIsMandatory(Boolean isMandatory){
-            Boolean status = UIActions.getElementParent(usernameInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(usernameInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -229,7 +231,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkPasswordIsMandatory(Boolean isMandatory){
-            Boolean status = UIActions.getElementParent(passInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(passInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -241,7 +243,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkHobbyIsMandatory(Boolean isMandatory){
-            Boolean status = UIActions.getElementParent(hobbyLabel).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(hobbyLabel).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -249,7 +251,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkMaritalStatusIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(maritalStatusLabel).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(maritalStatusLabel).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -257,7 +259,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkCountryIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(countryDropbdown).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(countryDropbdown).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -265,7 +267,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkDateOfBirthIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(dateOfBirthInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(dateOfBirthInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -273,7 +275,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkPhoneIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(phoneInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(phoneInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -281,7 +283,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkFirstnameIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(firstNameInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(firstNameInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be: " + isMandatory + ", but is: " + status + "");
             }
@@ -289,7 +291,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkLastnameIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(lastNameInput).findElement(By.xpath("..")).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(lastNameInput).findElement(By.xpath("..")).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -297,7 +299,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkEmailIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(emailInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(emailInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -305,7 +307,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkAboutYourselfIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(aboutYourselfInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(aboutYourselfInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -313,7 +315,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkConfirmPasswordIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(confimPassInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(confimPassInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }
@@ -321,7 +323,7 @@ public class NewAccountPage {
         }
 
         public AccountBuilder checkProfilePictureIsMandatory(Boolean isMandatory) {
-            Boolean status = UIActions.getElementParent(profilePictureInput).getAttribute("class").equals("fieldset error" );
+            Boolean status = UIActions.getElementParent(profilePictureInput).getAttribute("class").equals(StringsEN.ERROR_CLASS_NAME_FOR_FIELDS.getString());
             if (!isMandatory.equals(status)) {
                 throw new IllegalStateException("Mandatory should be " + isMandatory + " but is: " + status + "");
             }

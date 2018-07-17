@@ -5,6 +5,7 @@ import org.framework.utils.UIActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@SuppressWarnings("UnusedReturnValue")
 public class LoginPage extends PageBase{
     @FindBy(id = "username")
     private WebElement usernameInput;

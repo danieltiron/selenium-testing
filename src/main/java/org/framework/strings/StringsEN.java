@@ -6,6 +6,7 @@ public enum StringsEN {
     EMAIL_ALREADY_EXISTS_ERROR("E-mail address already exists"),
     MINIMUM_8_CHARACTERS_PASS_ERROR("Minimum 8 characters required"),
     PASS_VERY_WEEK("pass_v_week"),
+    ERROR_CLASS_NAME_FOR_FIELDS("fieldset error"),
 
     //strings for login page
     LOGGED_INTO_SECURE_AREA_MESSAGE("You logged into a secure area!");

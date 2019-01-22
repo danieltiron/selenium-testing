@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        label {
+            label ""
+            customWorkspace "${WORKSPACE}/${BUILD_NUMBER}"
+        }
+    }
 
     stages {
         stage('Connect to VPN') {

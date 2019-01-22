@@ -1,11 +1,5 @@
 pipeline {
-    
-    agent {
-        node {
-            label ''
-            customWorkspace '${WORKSPACE}/${BUILD_NUMBER}'
-        }
-    }
+    agent any
     
     stages {
         stage('Connect to VPN') {
@@ -17,7 +11,7 @@ pipeline {
         stage('Run selenium tests') {
             steps {
                 sh '''
-                cd ${WORKSPACE}/${BUILD_NUMBER}
+                cd ${WORKSPACE}
                 echo $(pwd)
                 '''
             }

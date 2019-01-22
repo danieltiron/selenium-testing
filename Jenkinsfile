@@ -1,6 +1,9 @@
 pipeline {
     node {
-        label 'my-defined-label'
+        label ''
+        sh '''
+        echo ${WORKSPACE}
+        '''
         customWorkspace '${WORKSPACE}/${BUILD_NUMBER}'
     }
     

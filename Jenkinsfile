@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        node {
+          label ''
+          customWorkspace "${JENKINS_HOME}/workspace/${JOB_NAME}/${BUILD_NUMBER}"
+        }
+    }
     
     stages {
         stage('Connect to VPN') {

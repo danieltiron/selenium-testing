@@ -1,10 +1,13 @@
 pipeline {
-    node {
-        label ''
-        sh '''
-        echo ${WORKSPACE}
-        '''
-        customWorkspace '${WORKSPACE}/${BUILD_NUMBER}'
+    
+    agent {
+        node {
+            label ''
+            sh '''
+            echo ${WORKSPACE}
+            '''
+            customWorkspace '${WORKSPACE}/${BUILD_NUMBER}'
+        }
     }
     
     stages {

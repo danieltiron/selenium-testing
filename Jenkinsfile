@@ -23,8 +23,8 @@ pipeline {
                 sh '''
                 cd ${WORKSPACE}
                 echo $(pwd)
-                echo ${params.TEST_RUN_ID}
-                echo ${params.USE_TESTRAIL} 
+                echo "${params.TEST_RUN_ID}"
+                echo "${params.USE_TESTRAIL}" 
                 '''
             }
         }

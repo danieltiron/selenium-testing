@@ -6,6 +6,11 @@ pipeline {
         }
     }
     
+    parameters {
+        string(name: 'TEST_RUN_ID', defaultValue: 'Mr Jenkins', description: 'Testrail test run id')
+        choice(name: 'USE_TESTRAIL', choices: ['yes', 'no'], description: 'Use testrail')
+    }
+    
     stages {
         stage('Connect to VPN') {
             steps {
@@ -18,6 +23,8 @@ pipeline {
                 sh '''
                 cd ${WORKSPACE}
                 echo $(pwd)
+                echo ${params.TEST_RUN_ID}
+                echo ${params.USE_TESTRAIL} 
                 '''
             }
         }

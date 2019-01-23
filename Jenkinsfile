@@ -20,11 +20,9 @@ pipeline {
 
         stage('Run selenium tests') {
             steps {
-                sh '''
-                cd ${WORKSPACE}
-                echo $(pwd)
-                echo "${params.TEST_RUN_ID}"
-                echo "${params.USE_TESTRAIL}" 
+                sh "cd ${WORKSPACE}"
+                sh "echo ${params.TEST_RUN_ID}"
+                sh "echo ${params.USE_TESTRAIL}"
                 '''
             }
         }

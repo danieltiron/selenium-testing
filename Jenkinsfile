@@ -23,7 +23,6 @@ pipeline {
                 sh "cd ${WORKSPACE}"
                 sh "echo ${params.TEST_RUN_ID}"
                 sh "echo ${params.USE_TESTRAIL}"
-                '''
             }
         }
     }

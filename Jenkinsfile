@@ -7,7 +7,7 @@ pipeline {
     }
     
     parameters {
-        string(name: 'TEST_RUN_ID', defaultValue: 'Mr Jenkins', description: 'Testrail test run id')
+        string(name: 'TEST_RUN_ID', defaultValue: 'enter ID', description: 'Testrail test run id')
         choice(name: 'USE_TESTRAIL', choices: ['yes', 'no'], description: 'Use testrail')
     }
     
